@@ -1,7 +1,8 @@
 from PyQt5.QtCore import Qt
 from random import randint
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QHBoxLayout, QVBoxLayout, QLabel, QMessageBox, QLineEdit
+from PyQt5.QtWidgets import *
 from pygame import mixer
+from PyQt5.QtGui import *
 
 number = randint(1, 1) #создание переменой с выбором бота
 popitki = 1 #переменая с оставшимися попытками
@@ -18,43 +19,55 @@ win.setMinimumSize(400, 400)
 win.setMaximumSize(400, 400)
 
 main_layout = QVBoxLayout() #создание основного лайаута
-
-label1 = QLabel('Угадай число')  #надпись
+ 
+label1 = QLabel('Угадай число:')  #надпись
+label1.setFont(QFont('Arial', 20))
 hor_lay1= QHBoxLayout() #горизонтальный лайаут
 hor_lay1.addWidget(label1, alignment= Qt.AlignCenter)
 main_layout.addLayout(hor_lay1)
 
 but_easy =QPushButton('Легкая сложность') #кнопки сложности
+but_easy.setFont(QFont('Arial', 10))
 but_hard =QPushButton('Сложная сложность')
+but_hard.setFont(QFont('Arial', 10))
 hor_lay2 = QHBoxLayout() #горизонтальный лайаут
 hor_lay2.addWidget(but_easy, alignment= Qt.AlignCenter)
 hor_lay2.addWidget(but_hard, alignment= Qt.AlignCenter)
 main_layout.addLayout(hor_lay2)
 
 num_text = QLineEdit('Введи число') #ввод пользователя
+num_text.setFont(QFont('Arial', 10))
 but_text =QPushButton('Потвердить') #кнопка потвердит
+but_text.setFont(QFont('Arial', 10))
 hor_lay3 = QHBoxLayout() #горизонтальный лайаут
 hor_lay3.addWidget(num_text, alignment= Qt.AlignCenter)
 hor_lay3.addWidget(but_text, alignment= Qt.AlignCenter)
 main_layout.addLayout(hor_lay3)
 
 res_text = QLabel('Результат:') #надпись результат и результат
+res_text.setFont(QFont('Arial', 10))
 result = QLabel('-')
+result.setFont(QFont('Arial', 10))
 hor_lay4 = QHBoxLayout() #горизонтальный лайаут
 hor_lay4.addWidget(res_text, alignment= Qt.AlignCenter)
 hor_lay4.addWidget(result, alignment= Qt.AlignCenter)
 main_layout.addLayout(hor_lay4)
 
 pop_text = QLabel('Попыток осталось:') #надпись результат и результат
+pop_text.setFont(QFont('Arial', 10))
 pop = QLabel('-')
+pop.setFont(QFont('Arial', 10))
 hor_lay5 = QHBoxLayout() #горизонтальный лайаут
 hor_lay5.addWidget(pop_text, alignment= Qt.AlignCenter)
 hor_lay5.addWidget(pop, alignment= Qt.AlignCenter)
 main_layout.addLayout(hor_lay5)
 
 but_stat = QPushButton('Статистика') #кнопка статистики
+but_stat.setFont(QFont('Arial', 13))
 but_music = QPushButton('Музыка')
+but_music.setFont(QFont('Arial', 13))
 but_pause = QPushButton('Стоп')
+but_pause.setFont(QFont('Arial', 13))
 hor_lay5 = QHBoxLayout() #горизонтальный лайаут
 hor_lay5.addWidget(but_stat, alignment= Qt.AlignCenter)
 hor_lay5.addWidget(but_music, alignment= Qt.AlignCenter)
