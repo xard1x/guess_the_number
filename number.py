@@ -1,7 +1,6 @@
 from PyQt5.QtCore import Qt
 from random import randint
 from PyQt5.QtWidgets import *
-from pygame import mixer
 from PyQt5.QtGui import *
 
 number = randint(1, 1) #создание переменой с выбором бота
@@ -64,16 +63,10 @@ main_layout.addLayout(hor_lay5)
 
 but_stat = QPushButton('Статистика') #кнопка статистики
 but_stat.setFont(QFont('Arial', 13))
-but_music = QPushButton('Музыка')
-but_music.setFont(QFont('Arial', 13))
-but_pause = QPushButton('Стоп')
-but_pause.setFont(QFont('Arial', 13))
 hor_lay5 = QHBoxLayout() #горизонтальный лайаут
 hor_lay5.addWidget(but_stat, alignment= Qt.AlignCenter)
-hor_lay5.addWidget(but_music, alignment= Qt.AlignCenter)
-hor_lay5.addWidget(but_pause, alignment= Qt.AlignCenter)
 main_layout.addLayout(hor_lay5)
-but_pause.hide()
+
 
 def okno(): #функция создания окна для статистики
     global stat_title
@@ -150,25 +143,11 @@ def statistics(): #функция с выводом статистики
     stat_title = 'Кол-во попыток:'
     stat_text = str(glob_attempts)
     okno()
-def play_music(): #проигрывание музыки
-    volume = 1
-    mixer.init()
-    mixer.music.load('music.wav')
-    mixer.music.play(-1)
-    mixer.music.set_volume(volume)
-    but_music.hide()
-    but_pause.show()
-def pause(): #остановка музыки
-    but_music.show()
-    mixer.music.pause()
-    but_pause.hide()
 
-but_pause.clicked.connect(pause)
 but_stat.clicked.connect(statistics) #заключение
 but_text.clicked.connect(confirm)
 but_hard.clicked.connect(hard)
 but_easy.clicked.connect(easy)
-but_music.clicked.connect(play_music)
 win.setLayout(main_layout)
 win.show()
 app.exec()
